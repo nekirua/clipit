@@ -778,7 +778,7 @@ def ascend_txt(args):
             result.append(prompt(iii))
 
     if args.enforce_palette_annealing and args.target_palette:
-        target_palette = torch.FloatTensor(args.target_palette).requires_grad_(False).to(device)
+        target_palette = torch.FloatTensor(args.target_palette).to(device)
         _pixels = cur_cutouts[cutoutSize].permute(0,2,3,1).reshape(-1,3)
         palette_dists = torch.cdist(target_palette, _pixels, p=2)
         best_guesses = palette_dists.argmin(axis=0)
