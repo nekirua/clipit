@@ -414,7 +414,7 @@ def do_init(args):
     gside_Y = sideY
 
     for clip_model in args.clip_models:
-        perceptor = clip.load(clip_model, jit=jit)[0].eval().requires_grad_(False).to(device)
+        perceptor = clip.load(clip_model, jit=jit)[0].eval().to(device)
         perceptors[clip_model] = perceptor
 
         cut_size = perceptor.visual.input_resolution
